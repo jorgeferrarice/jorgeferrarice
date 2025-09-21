@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge Ferrari Ce - Sr. Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .experience-item, .project-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .experience-item:hover, .project-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .duration {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .location {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+        }
+
+        .description {
+            color: #495057;
+            margin-top: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 0.6rem;
+        }
+
+        .tool-item {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.5rem 0.8rem;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .tool-item:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .languages-list {
+            list-style: none;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        .language-level {
+            background: #667eea;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: #764ba2;
+        }
+
+        .education-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .degree {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .institution {
+            color: #667eea;
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        .edu-duration {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .skills-grid, .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: #764ba2;
+            transform: scale(1.1);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()" title="Print Resume">🖨️</button>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Jorge Ferrari Ce</h1>
+                <p class="title">Sr. Software Engineer</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:contact@jorgeferrarice.com">contact@jorgeferrarice.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>(+55) 47 99180 3463</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Santa Catarina, Brazil</span>
+                    </div>
+                  </div>
+                  <div class="contact-info">
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://linkedin.com/in/joorgeferrari" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🐙</span>
+                        <a href="https://github.com/jorgeferrarice" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <ul class="languages-list">
+                        <li class="language-item">
+                            <span>🇧🇷 Portuguese</span>
+                            <span class="language-level">Native</span>
+                        </li>
+                        <li class="language-item">
+                            <span>🇺🇸 English</span>
+                            <span class="language-level">Advanced (C2)</span>
+                        </li>
+                        <li class="language-item">
+                            <span>🇪🇸 Spanish</span>
+                            <span class="language-level">Elementary</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Development Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">PHP</div>
+                        <div class="skill-item">Laravel</div>
+                        <div class="skill-item">TypeScript</div>
+                        <div class="skill-item">Next.js</div>
+                        <div class="skill-item">React</div>
+                        <div class="skill-item">Express.js</div>
+                        <div class="skill-item">GraphQL</div>
+                        <div class="skill-item">PostgreSQL</div>
+                        <div class="skill-item">MySQL</div>
+                        <div class="skill-item">DynamoDB</div>
+                        <div class="skill-item">Flutter</div>
+                        <div class="skill-item">Firebase</div>
+                        <div class="skill-item">AWS</div>
+                        <div class="skill-item">Docker</div>
+                        <div class="skill-item">Kubernetes</div>
+                        <div class="skill-item">Terraform</div>
+                        <div class="skill-item">CI/CD</div>
+                        <div class="skill-item">JavaScript</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Tools</h2>
+                    <div class="tools-grid">
+                        <div class="tool-item">Cursor IDE</div>
+                        <div class="tool-item">Claude Code</div>
+                        <div class="tool-item">pgAdmin</div>
+                        <div class="tool-item">PHP Unit</div>
+                        <div class="tool-item">Jest</div>
+                        <div class="tool-item">Sentry</div>
+                        <div class="tool-item">BetterStack</div>
+                        <div class="tool-item">Jira</div>
+                        <div class="tool-item">ClickUp</div>
+                        <div class="tool-item">Trello</div>
+                        <div class="tool-item">Circle CI</div>
+                        <div class="tool-item">Codecov</div>
+                        <div class="tool-item">GH Actions</div>
+                        <div class="tool-item">Vite</div>
+                        <div class="tool-item">Webpack</div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Experience</h2>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Sr. Software Engineer</div>
+                                <div class="company">Series Entertainment</div>
+                                <div class="location">Remote</div>
+                            </div>
+                            <div class="duration">Jan 25 - Oct 25</div>
+                        </div>
+                        <div class="description">
+                            Developed games and supporting technologies using React, React Native, PostgreSQL, Firebase, Supabase, and GraphQL, including titles published on Netflix. Contributed to the creation of a groundbreaking AI-driven game redefining player interaction with artificial intelligence. Enhanced development workflows through CI/CD pipeline integrations and played a key role in technical decision-making.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Sr. Software Engineer</div>
+                                <div class="company">BairesDev</div>
+                                <div class="location">Remote</div>
+                            </div>
+                            <div class="duration">Jun 23 - Jan 25</div>
+                        </div>
+                        <div class="description">
+                            Collaborated with Lionsgate on AI initiatives and enhanced DailyDot.com using PHP, React, and MySQL. Contributed to continuous development with daily coding in PHP, React, LESS, and MySQL. Led infrastructure migration to AWS with Terraform and maintained services through Docker, Kubernetes (AWS EKS), and CI/CD pipelines. Built APIs with Express.js and Node.js while developing user interfaces for AI-driven systems.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Sr. Software Engineer</div>
+                                <div class="company">Freelancing</div>
+                                <div class="location">Remote</div>
+                            </div>
+                            <div class="duration">Feb 23 - Jun 23</div>
+                        </div>
+                        <div class="description">
+                            Worked as a freelance developer delivering full-stack solutions with modern web and mobile technologies. Contributed to multiple projects across diverse industries, adapting quickly to varied client needs and tech stacks.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Sr. Frontend Developer</div>
+                                <div class="company">CI&T</div>
+                                <div class="location">Remote</div>
+                            </div>
+                            <div class="duration">Jun 22 - Feb 23</div>
+                        </div>
+                        <div class="description">
+                            Delivered Angular 12+ components for Norfolk Southern, strengthening internal system UIs. Supported backend development with Kotlin, contributing to robust and scalable services. Introduced frontend testing practices to improve reliability, maintainability, and developer confidence. Ensured overall code quality through consistent collaboration and modern development standards.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Lead Engineer</div>
+                                <div class="company">OFF! Studio</div>
+                                <div class="location">Brazil</div>
+                            </div>
+                            <div class="duration">Apr 19 - May 22</div>
+                        </div>
+                        <div class="description">
+                            Led projects with PHP (Yii2), MySQL, React, Next.js, PostgreSQL, Flutter, and Firebase while mentoring junior developers. Built a scalable e-commerce platform using PHP (Yii2) and MySQL. Created a custom pizza delivery platform leveraging React, Next.js, and PostgreSQL. Developed a delivery mobile app with Flutter and Firebase, ensuring real-time functionality and seamless user experience.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Full Stack Engineer</div>
+                                <div class="company">GRUPO W</div>
+                                <div class="location">Brazil</div>
+                            </div>
+                            <div class="duration">Jan 17 - Apr 19</div>
+                        </div>
+                        <div class="description">
+                            Served as tech lead using PHP (Yii2), AWS, CI/CD, and scalable infrastructure for major projects. Led development of the e-commerce platform for South America's largest theme park. Built robust systems integrating hardware components such as turnstiles. Ensured reliable delivery and long-term maintainability through modern infrastructure practices.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Software Engineer</div>
+                                <div class="company">Various Companies</div>
+                                <div class="location">Brazil</div>
+                            </div>
+                            <div class="duration">May 08 - Jan 17</div>
+                        </div>
+                        <div class="description">
+                            Started working as a software engineer during college, gaining early hands-on industry experience. Contributed to multiple companies and projects, building a strong foundation across diverse technologies and domains.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Projects</h2>
+
+                    <div class="project-item">
+                        <h3 class="job-title">Elevatr - Jorge Ferrari Ce's Resume AI Assistant</h3>
+                        <div class="description">
+                            AI-powered resume assistant that helps optimize and enhance resumes using modern AI technologies.
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/jorgeferrarice/resume-ai-web" target="_blank" class="project-link">Web App</a>
+                            <a href="https://github.com/jorgeferrarice/resume-ai-api" target="_blank" class="project-link">API</a>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <h3 class="job-title">Hanimo - Anime Tracking App (iOS)</h3>
+                        <div class="description">
+                            iOS application for tracking and managing anime watchlists with a beautiful, intuitive interface.
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/jorgeferrarice/hanimo-app" target="_blank" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="education-item">
+                        <div class="degree">Bachelor's in Computer Science</div>
+                        <div class="institution">Unicesumar</div>
+                        <div class="edu-duration">Feb 2006 - Oct 2010</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="degree">Multiple Courses</div>
+                        <div class="institution">Udemy</div>
+                        <div class="edu-duration">Ongoing</div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
